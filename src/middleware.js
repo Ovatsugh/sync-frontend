@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
 
 
-export  function middleware(request: NextRequest) {
+export function middleware(request) {
 
     const token = request.cookies.get('token')?.value
     const signURL = new URL('/login', request.url)
@@ -16,18 +15,9 @@ export  function middleware(request: NextRequest) {
 
         return NextResponse.redirect(signURL)
     }
-    //--------------------------------------------------
-  
-        // api.get('/users/verifyuser', {
-        //     headers: {
-        //         Authorization: `Bearer ${token}`,
-        //     },
-        // }).then().catch(() => {
-            
-        // })
 
 
-    //--------------------------------------------------
+
 
     if (request.nextUrl.pathname === '/login') {
         return NextResponse.redirect(homeURL)
