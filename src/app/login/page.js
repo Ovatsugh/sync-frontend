@@ -25,6 +25,7 @@ export default function login() {
             Cookies.set('token', user.data.token);
             api.defaults.headers.Authorization = `Bearer ${user.token}`;
             Notification('success', 'Logado com sucesso!');
+        
             router.push('/user/home');
         } catch (err) {
             if (!err.response.data.message) {
